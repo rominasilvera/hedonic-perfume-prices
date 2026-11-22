@@ -1,0 +1,282 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ProductGroup",
+  "name": "Yara",
+  "productGroupID": "9141",
+  "url": "https://www.druni.es/yara-lattafa-eau-parfum-mujer",
+  "description": "El perfume Yara es ideal para ser utilizado durante el día o la noche, en cualquier ocasión y durante todas las estaciones del año.Su delicado aroma florar y frutal brinda una sensación de dulzura y frescura que te acompañará durante todo el día. Su aroma femenino, suave y delicado se adapta perfectamente a cualquier ocasión y estación del año.Notas olfativasNotas de Salida: Orquídea, heliotropo y naranja tangerinaNotas de Corazón: Acuerdo goloso y frutas tropicalesNotas de Fondo: Vainilla, almizcle y sándalo.",
+  "image": ["https://www.druni.es/media/catalog/product/9/1/9141.jpg", "https://www.druni.es/media/catalog/product/9/1/9141_2.jpg", "https://www.druni.es/media/catalog/product/9/1/9141_3.jpg"],
+  "brand": {
+    "@type": "Brand",
+    "name": "LATTAFA"
+  },
+  "variesBy": "size",
+  "hasVariant": [
+    {
+      "@type": "Product",
+      "name": "Yara 100ML",
+      "sku": "1699629",
+      "size": "100ML",
+      "image": "https://www.druni.es/media/catalog/product/1/6/1699629.jpg?quality=80&fit=bounds&height=&width=",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "EUR",
+        "price": 19.95,
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": 3.95,
+            "currency": "EUR"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "ES"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 2,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "ES",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/ReturnShippingFees",
+          "returnShippingFeesAmount": {
+            "@type": "MonetaryAmount",
+            "value": 3.95,
+            "currency": "EUR"
+          }
+        },
+        "validFrom": "2026-11-22",
+        "priceValidUntil": "2027-11-22"
+      },
+      "mpn": "1699629"
+    },
+    {
+      "@type": "Product",
+      "name": "Yara 50ML",
+      "sku": "1699764",
+      "size": "50ML",
+      "image": "https://www.druni.es/media/catalog/product/1/6/1699764.jpg?quality=80&fit=bounds&height=&width=",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "EUR",
+        "price": 9.95,
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": 3.95,
+            "currency": "EUR"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "ES"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 2,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "ES",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/ReturnShippingFees",
+          "returnShippingFeesAmount": {
+            "@type": "MonetaryAmount",
+            "value": 3.95,
+            "currency": "EUR"
+          }
+        },
+        "validFrom": "2026-11-22",
+        "priceValidUntil": "2027-11-22"
+      },
+      "mpn": "1699764"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 4.6,
+    "reviewCount": 245,
+    "bestRating": 5,
+    "worstRating": 1
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Cliente"
+      },
+      "datePublished": "2026-09-27",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Cliente"
+      },
+      "datePublished": "2026-09-24",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Cliente"
+      },
+      "datePublished": "2026-09-22",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 4,
+        "bestRating": 5,
+        "worstRating": 1
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Cliente"
+      },
+      "datePublished": "2026-09-21",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Cliente"
+      },
+      "datePublished": "2026-09-17",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Cliente"
+      },
+      "datePublished": "2026-09-15",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "reviewBody": "Me encanta"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Cliente"
+      },
+      "datePublished": "2026-09-14",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "reviewBody": "Me gusta su aroma es fabuloso "
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Cliente"
+      },
+      "datePublished": "2026-09-14",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Cliente"
+      },
+      "datePublished": "2026-09-14",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 4,
+        "bestRating": 5,
+        "worstRating": 1
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Cliente"
+      },
+      "datePublished": "2026-09-14",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      }
+    }
+  ],
+  "category": "Perfumes > Perfumes Mujer"
+}
