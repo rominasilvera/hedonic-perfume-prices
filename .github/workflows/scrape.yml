@@ -1,0 +1,75 @@
+name: Scrape perfume prices
+
+on:
+  workflow_dispatch:          # run manually from the Actions tab
+  schedule:
+    - cron: "0 5 * * *"       # every day at 05:00 UTC (until END_DATE, see below)
+
+env:
+  END_DATE: "2027-01-31"      # last day of scheduled scraping (inclusive)
+
+permissions:
+  contents: write             # needed to commit the scraped data
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+jobs:
+  # Cron has no "stop date", so scheduled runs check the date first.
+  # Manual runs (workflow_dispatch) always go ahead.
+  check-date:
+    runs-on: ubuntu-latest
+    outputs:
+      active: ${{ steps.check.outputs.active }}
+    steps:
+      - id: check
+        run: |
+          today=$(date -u +%Y-%m-%d)
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" || ! "$today" > "$END_DATE" ]]; then
+            echo "active=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Past $END_DATE - skipping scheduled scrape."
+            echo "active=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  scrape:
+    needs: check-date
+    if: needs.check-date.outputs.active == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install system libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libxml2-dev libssl-dev \
+            libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev \
+            libpng-dev libtiff5-dev libjpeg-dev
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: renv       # use the R version recorded in renv.lock
+          use-public-rspm: true # prebuilt Linux binaries, much faster installs
+
+      - name: Restore packages from renv.lock
+        uses: r-lib/actions/setup-renv@v2
+
+      - name: Run scraper
+        run: Rscript R/scraper.R
+
+      - name: Commit scraped data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/raw
+          if git diff --cached --quiet; then
+            echo "No new data to commit."
+          else
+            git commit -m "data: scrape $(date -u +%Y-%m-%d)"
+            git push
+          fi
