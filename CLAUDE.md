@@ -44,25 +44,25 @@ Consequences:
 
 ## Commit style
 
-Conventional-ish prefixes as used in history: `feat(scraper)`, `data(...)`, `build(deps) ...`, `[ci] ...`.
+Conventional-ish prefixes as used in history: `feat(scraper)`, `data(...)`, `build(deps) ...`.
 
 Standard:
-`feat` New functionality
-`fix` Fix bug
-`docs`
-`style` Format (non logic changes)
-`refactor` Code reorganization
-`perf` Performance improvements
-`test` Tests
-`build` Dependencies and environment
-`ci` GitHub actions
-`chore` Maintenance
-`revert` Revert commits
+- `feat` New functionality
+- `fix` Fix bug
+- `docs` Comments, code documentation
+- `style` Format (non logic changes)
+- `refactor` Code reorganization
+- `perf` Performance improvements
+- `test` Tests
+- `build` Dependencies and environment
+- `ci` GitHub actions
+- `chore` Maintenance
+- `revert` Revert commits
 
 Data science related:
-`data` New data or changes in existing data
-`eda` Exploratory data analysis
-`model` Model related
-`exp` Experiments that may not make the cut
-`viz` Plots and visualization
-`report` Quarto, posted results
+- `data` New data or changes in existing data
+- `eda` Exploratory data analysis
+- `model` Model related
+- `exp` Experiments that may not make the cut
+- `viz` Plots and visualization
+- `report` Quarto, posted results
