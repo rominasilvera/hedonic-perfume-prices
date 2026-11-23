@@ -35,7 +35,7 @@ Data caveats: gift sets ("Cofre ...") have no `size`, so `size_ml` is `NA`; a fe
 
 ## GitHub Actions
 
-`.github/workflows/scrape.yml` runs the scraper daily at 05:00 UTC and commits the new files in `data/raw/` to `main` as `github-actions[bot]` ("data: scrape <date>"). Scheduled runs stop after `END_DATE` (2027-01-31), but manual `workflow_dispatch` runs always go ahead.
+`.github/workflows/scrape.yml` runs the scraper daily and commits the new files in `data/raw/` to `main` as `github-actions[bot]` ("data: scrape <date>"). GitHub can delay scheduled runs by hours or skip them, so there are two triggers: a main run at 04:17 UTC and a backup at 16:17 UTC. The `check-date` job skips the scrape if today's CSV is already on `origin/main` or if the date is past `END_DATE` (2027-01-31). Manual `workflow_dispatch` runs always go ahead. The goal is one snapshot per day; the exact time of day doesn't matter.
 
 Consequences:
 
@@ -44,9 +44,10 @@ Consequences:
 
 ## Commit style
 
-Conventional-ish prefixes as used in history: `feat(scraper)`, `data(...)`, `build(deps) ...`.
+Conventional-ish prefixes as used in history: `feat: scraper`, `data: ...`, `build(deps) ...`.
 
 Standard:
+
 - `feat` New functionality
 - `fix` Fix bug
 - `docs` Comments, code documentation
@@ -60,6 +61,7 @@ Standard:
 - `revert` Revert commits
 
 Data science related:
+
 - `data` New data or changes in existing data
 - `eda` Exploratory data analysis
 - `model` Model related
