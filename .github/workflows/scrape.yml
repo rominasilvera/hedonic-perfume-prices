@@ -2,8 +2,12 @@ name: Scrape perfume prices
 
 on:
   workflow_dispatch:          # run manually from the Actions tab
+  # GitHub may delay or skip scheduled runs, so there are two daily triggers.
+  # Off-the-hour times are less congested. The backup run only scrapes if the
+  # main run hasn't produced today's file yet (see check-date below).
   schedule:
-    - cron: "0 5 * * *"       # every day at 05:00 UTC (until END_DATE, see below)
+    - cron: "17 4 * * *"      # main run, 04:17 UTC
+    - cron: "17 16 * * *"     # backup run, 16:17 UTC
 
 env:
   END_DATE: "2027-01-31"      # last day of scheduled scraping (inclusive)
@@ -16,21 +20,34 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Cron has no "stop date", so scheduled runs check the date first.
+  # Scheduled runs skip the scrape if:
+  #   - today is past END_DATE (cron has no "stop date"), or
+  #   - today's file is already on main (the other daily run got it).
   # Manual runs (workflow_dispatch) always go ahead.
   check-date:
     runs-on: ubuntu-latest
     outputs:
       active: ${{ steps.check.outputs.active }}
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
       - id: check
         run: |
           today=$(date -u +%Y-%m-%d)
-          if [[ "${{ github.event_name }}" == "workflow_dispatch" || ! "$today" > "$END_DATE" ]]; then
+          # Look at the latest main, not the commit this run was triggered
+          # on: the other run may have pushed while this one was queued.
+          git fetch --quiet origin main
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "active=true" >> "$GITHUB_OUTPUT"
-          else
+          elif [[ "$today" > "$END_DATE" ]]; then
             echo "Past $END_DATE - skipping scheduled scrape."
             echo "active=false" >> "$GITHUB_OUTPUT"
+          elif git cat-file -e "origin/main:data/raw/products_mujer_${today}.csv" 2>/dev/null; then
+            echo "Today's data already scraped - skipping."
+            echo "active=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "active=true" >> "$GITHUB_OUTPUT"
           fi
 
   scrape:
@@ -71,5 +88,7 @@ jobs:
             echo "No new data to commit."
           else
             git commit -m "data: scrape $(date -u +%Y-%m-%d)"
+            # Main may have moved during the hour-long scrape (e.g. your own push)
+            git pull --rebase origin main
             git push
           fi
